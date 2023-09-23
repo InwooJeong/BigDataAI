@@ -49,3 +49,46 @@ print(data)
 # data = data.replace(NaN, mean)
 data.replace(NaN,mean,inplace = True)
 print(data)
+
+import matplotlib.pyplot as plt
+x = np.random.randn(1000)
+plt.hist(x, density=True, bins=np.linspace(-5,5,21))
+
+# ### 1. Simple Feature Scaling
+#
+# Xnew = Xold / Xmax
+#
+#
+# ### 2. Min - Max
+#
+# Xnew = Xold - Xmin / Xmax - Xmin
+#
+#
+# ### 3. Z - score
+#
+# Xnew = Xold - feature의 평균 / 표준편차
+
+# # Data Formatting
+# - 수치값을 카테고리 값으로 변환
+
+price = np.random.randint(100,size=8)*10000
+cars = pd.DataFrame(price,columns=['price'])
+cars
+
+group_names = ['저급','중급','고급']
+cars['Level'], mybin = pd.cut(cars['price'],3,labels=group_names,retbins=True)
+cars
+
+print(mybin)
+
+# - 카테고리 값을 수치값으로 변환
+
+ary = [[1,1.1,'손'],[2,2.2,'날개'],[3,3.3,'손']]
+data = pd.DataFrame(ary,columns=['수온','상온','hand'])
+pd.get_dummies(data['hand'])
+
+data = pd.concat([data,pd.get_dummies(data['hand'])],axis=1,sort=False)
+data
+
+data.drop(['hand'],axis=1,inplace=True)
+data
