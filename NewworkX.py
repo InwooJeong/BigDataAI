@@ -184,6 +184,23 @@ with open('test1.csv', 'rb') as f:
     result = chardet.detect(f.readline())  # or read() if the file is small.
     print(result['encoding'])
 
-K = np.loadtxt("test2.csv",delimiter=",",encoding="UTF-8-SIG")
-G = nx.to_networkx_graph(K)
-nx.draw(G, with_labels=True, node_color='yellow', edge_color='red')
+# # Networkx 샘플 1
+# - https://networkx.github.io/documentation/stable/auto_examples/graph/plot_karate_club.html
+
+import networkx as nx
+G = nx.karate_club_graph()
+import matplotlib.pyplot as plt
+nx.draw(G,with_labels=True,node_color='lightblue',edge_color='yellow')
+
+G.degree()
+
+print(G.degree())
+
+G.degree(16)
+
+import numpy as np
+import networkx as nx
+import matplotlib.pyplot as plt
+G = nx.karate_club_graph()
+
+
